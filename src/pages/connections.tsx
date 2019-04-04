@@ -1,7 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
 
-const ConnectionsPage: React.FunctionComponent = props => (
-  <div>Connections Page!</div>
+const MyNewButton = styled.button`
+  background-color: red;
+`
+
+const ConnectionsPage = (props: any) => (
+  <div>
+    Connections Page!
+    <MyNewButton>Yay</MyNewButton>
+  </div>
 )
 
 export default ConnectionsPage

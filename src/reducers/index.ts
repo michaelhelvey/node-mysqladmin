@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
-import databases from './databases'
+import databases, { DatabasesState } from './databases'
+
+export interface AppState {
+  databases: DatabasesState
+}
 
 export default combineReducers({
   databases,

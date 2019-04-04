@@ -3,7 +3,8 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import configureStore from '../store'
-import ConnectionsPage from '../pages/connections'
+import ConnectionsPage from '../pages/Connections'
+import ConnectionsRoute from './ConnectionsRoute'
 
 const { store, persistor } = configureStore()
 
@@ -14,7 +15,11 @@ const App: React.FunctionComponent = props => (
     <PersistGate loading={null} persistor={persistor}>
       <Router>
         <Switch>
-          <Route exact path="/" component={ConnectionsPage} />
+          <ConnectionsRoute
+            exact
+            path="/"
+            OriginalComponent={ConnectionsPage}
+          />
           <Route component={NotFound} />
         </Switch>
       </Router>
