@@ -15,12 +15,12 @@ interface ConnectionsRouteProps extends RouteProps {
   isCurrentlyConnected: boolean
 }
 
-const ConnectionsRoute = ({
+const ConnectionsRoute: React.FunctionComponent<ConnectionsRouteProps> = ({
   OriginalComponent,
   isCurrentlyConnected,
   activeConnection,
   ...rest
-}: ConnectionsRouteProps) => {
+}) => {
   return (
     <Route
       {...rest}
