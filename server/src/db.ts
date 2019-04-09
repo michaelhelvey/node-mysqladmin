@@ -1,3 +1,23 @@
+/**
+ * Generic database connection implementation.
+ * Designed with MySQL and Postgres drivers in mind,
+ * but other databases could be made to work easily
+ * by implementing the DatabaseDriver interface.
+ */
+
+export class Database {
+  private driver: DatabaseDriver
+
+  constructor(driver: DatabaseDriver) {
+    this.driver = driver
+  }
+
+  async createConnection(options: DBConnectionOptions): Promise<DBConnection> {
+    const connection = await this.driver.connect(options)
+    return connection
+  }
+}
+
 export interface DBConnectionOptions {
   host: string
   user: string
@@ -29,17 +49,4 @@ export interface DBConnection {
 export interface DatabaseDriver {
   connect: (options: DBConnectionOptions) => Promise<DBConnection>
   disconnect: () => void
-}
-
-export class Database {
-  private driver: DatabaseDriver
-
-  constructor(driver: DatabaseDriver) {
-    this.driver = driver
-  }
-
-  async createConnection(options: DBConnectionOptions): Promise<DBConnection> {
-    const connection = await this.driver.connect(options)
-    return connection
-  }
 }
