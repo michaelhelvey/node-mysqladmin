@@ -11,7 +11,7 @@ import {
   DBQueryResult,
 } from '../db'
 
-class MySQLDatabaseDriver implements DatabaseDriver {
+export class MySQLDatabaseDriver implements DatabaseDriver {
   public connect(options: DBConnectionOptions): Promise<DBConnection> {
     return new Promise((resolve, reject) => {
       const connection = mysql.createConnection({
