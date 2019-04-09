@@ -10,7 +10,7 @@ const mapStateToProps = (state: AppState) => ({
 })
 
 interface ConnectionsRouteProps extends RouteProps {
-  OriginalComponent: (props: any) => JSX.Element
+  OriginalComponent: React.FunctionComponent<any>
   activeConnection: DatabaseConnection | null
   isCurrentlyConnected: boolean
 }
