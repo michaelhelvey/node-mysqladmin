@@ -7,7 +7,7 @@ const MyNewButton = styled.button`
 
 const ConnectionsPage = (props: any) => (
   <div>
-    Connections Page!
+    Connections Page Number 4!
     <MyNewButton>Yay</MyNewButton>
   </div>
 )

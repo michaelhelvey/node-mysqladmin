@@ -1,8 +1,8 @@
 import express from 'express'
-import { config } from 'dotenv'
+import { config as loadDevConfig } from 'dotenv'
 
 // load our environment variables in development
-config()
+loadDevConfig()
 
 // initialize our express app
 const app = express()

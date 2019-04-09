@@ -7,15 +7,20 @@
   "author": "Michael Helvey",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts -P ."
+    "dev": "ts-node-dev src/index.ts -P .",
+    "start": "ts-node src/index.ts -P . --no-notify"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "@types/socket.io": "^2.1.2",
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.1",
     "dotenv": "^7.0.0",
-    "ts-node": "^8.0.3"
+    "ts-node": "^8.0.3",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "typescript": "^3.4.2"
   }
 }
