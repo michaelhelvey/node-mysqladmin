@@ -13,10 +13,6 @@ const server = new http.Server(app)
 // initialize the socket connection that will handle db requests
 startSocketServer(server)
 
-app.get('/', (_req, res) => {
-  res.send('Hi, world')
-})
-
 const port = process.env.PORT || 3000
 server.listen(port, () => {
   console.log(`Server listening on port ${port}...`)

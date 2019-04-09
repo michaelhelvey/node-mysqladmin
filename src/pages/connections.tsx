@@ -18,27 +18,21 @@ const MyNewButton = styled.button`
 
 const ConnectionsPage = (props: any) => {
   useEffect(() => {
-    socket.emit(
-      events.CREATE_DB_CONN_REQ,
-      JSON.stringify({
-        user: 'root',
-        password: 'tallis',
-        host: '127.0.0.1',
-        database: 'rrm_test_2',
+    socket.emit(events.CREATE_DB_CONN_REQ, {
+      user: 'root',
+      password: 'tallis',
+      host: '127.0.0.1',
+      database: 'rrm_test_2',
+    })
+    socket.on(events.CREATE_DB_CONN_RESPONSE, (data: any) => {
+      console.log('create db conn ', data)
+      socket.emit(events.ISSUE_DB_CMD_REQ, {
+        sql: 'select User,Host from mysql.user',
       })
-    )
-    socket.on(events.CREATE_DB_CONN_RESPONSE, data => {
-      console.log(data)
-      socket.emit(
-        events.ISSUE_DB_CMD_REQ,
-        JSON.stringify({
-          query: 'select * from courses',
-        })
-      )
     })
 
-    socket.on(events.ISSUE_DB_CMD_RESPONSE, data => {
-      console.log(data)
+    socket.on(events.ISSUE_DB_CMD_RESPONSE, (data: any) => {
+      console.log('query db ', data)
     })
   })
 
