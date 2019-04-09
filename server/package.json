@@ -7,8 +7,8 @@
   "author": "Michael Helvey",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts -P .",
-    "start": "ts-node src/index.ts -P . --no-notify"
+    "dev": "ts-node-dev src/index.ts -P . --no-notify",
+    "start": "ts-node src/index.ts -P ."
   },
   "dependencies": {
     "@types/socket.io": "^2.1.2",

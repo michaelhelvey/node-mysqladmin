@@ -21,6 +21,7 @@ export default () => {
     console.log('create db conn ', data)
     socket.emit(events.ISSUE_DB_CMD_REQ, {
       sql: 'select User,Host from mysql.user',
+      id: Math.random(),
     })
   })
 

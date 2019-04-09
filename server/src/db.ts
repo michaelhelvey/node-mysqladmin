@@ -27,6 +27,7 @@ export interface DBConnectionOptions {
 }
 
 export interface DBQueryOptions {
+  id: number // allow the client to assign an id to track the request
   sql: string
   values?: any[]
   options?: any

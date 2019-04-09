@@ -28,11 +28,13 @@ export const dbRequest = async (request: DBQueryOptions, socket: Socket) => {
     )
     socket.emit(events.ISSUE_DB_CMD_RESPONSE, {
       success: true,
+      id: request.id, // send back client-assigned id so the client can track request
       response: queryResults,
     })
   } catch (e) {
     socket.emit(events.ISSUE_DB_CMD_RESPONSE, {
       success: false,
+      id: request.id,
       error: e,
     })
   }
