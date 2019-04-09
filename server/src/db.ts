@@ -33,7 +33,10 @@ export interface DBQueryOptions {
 }
 
 export interface DBQueryResult {
-  results: any[]
+  // results could theoretically not be an array depending on the query.
+  // for example, node's mysql library's result value is any-typed,
+  // so we can't make any guarantees.
+  results: any
   metadata: any
 }
 
@@ -43,10 +46,9 @@ export interface DBConnection {
     values?: any[],
     options?: any
   ) => Promise<DBQueryResult>
-  disconnect: () => void
+  disconnect: () => Promise<void>
 }
 
 export interface DatabaseDriver {
   connect: (options: DBConnectionOptions) => Promise<DBConnection>
-  disconnect: () => void
 }
