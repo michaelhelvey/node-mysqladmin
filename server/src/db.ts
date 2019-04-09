@@ -13,12 +13,17 @@ export interface DBQueryOptions {
 }
 
 export interface DBQueryResult {
-  results: any
+  results: any[]
   metadata: any
 }
 
 export interface DBConnection {
-  query: (options: DBQueryOptions) => Promise<DBQueryResult>
+  query: (
+    query: string,
+    values?: any[],
+    options?: any
+  ) => Promise<DBQueryResult>
+  disconnect: () => void
 }
 
 export interface DatabaseDriver {
@@ -27,7 +32,6 @@ export interface DatabaseDriver {
 }
 
 export class Database {
-  private connection?: DBConnection
   private driver: DatabaseDriver
 
   constructor(driver: DatabaseDriver) {
@@ -35,30 +39,7 @@ export class Database {
   }
 
   async createConnection(options: DBConnectionOptions): Promise<DBConnection> {
-    this.connection = await this.driver.connect(options)
-    return this.connection
-  }
-
-  disconnect() {
-    this.driver.disconnect()
-  }
-
-  async query(
-    query: string,
-    values?: any[],
-    options?: any
-  ): Promise<DBQueryResult> {
-    if (!this.connection) {
-      throw new Error(
-        `Database.query called without a valid database connection.  
-        You must call Database.createConnection before making queries.`
-      )
-    }
-    const result = await this.connection.query({
-      sql: query,
-      values,
-      options,
-    })
-    return result
+    const connection = await this.driver.connect(options)
+    return connection
   }
 }
