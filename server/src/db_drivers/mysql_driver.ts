@@ -1,3 +1,8 @@
+/**
+ * MySQL database driver implementing the DatabaseDriver
+ * interface.
+ */
+
 import * as mysql from 'mysql'
 import {
   DatabaseDriver,
@@ -7,7 +12,7 @@ import {
 } from '../db'
 
 class MySQLDatabaseDriver implements DatabaseDriver {
-  connect(options: DBConnectionOptions): Promise<DBConnection> {
+  public connect(options: DBConnectionOptions): Promise<DBConnection> {
     return new Promise((resolve, reject) => {
       const connection = mysql.createConnection({
         host: options.host,
@@ -25,7 +30,7 @@ class MySQLDatabaseDriver implements DatabaseDriver {
     })
   }
 
-  _createConnectionFromBaseConnection(
+  private _createConnectionFromBaseConnection(
     baseConn: mysql.Connection
   ): DBConnection {
     return {
@@ -34,9 +39,10 @@ class MySQLDatabaseDriver implements DatabaseDriver {
     }
   }
 
-  _query(
+  private _query(
     baseConn: mysql.Connection,
     query: string,
+    // declare initializers for values and options so we get clearly defined defaults
     values: any[] = [],
     options: any = {}
   ): Promise<DBQueryResult> {
@@ -62,7 +68,7 @@ class MySQLDatabaseDriver implements DatabaseDriver {
     })
   }
 
-  _disconnect(baseConn: mysql.Connection): Promise<void> {
+  private _disconnect(baseConn: mysql.Connection): Promise<void> {
     return new Promise((resolve, reject) => {
       baseConn.end(err => {
         if (err) {
