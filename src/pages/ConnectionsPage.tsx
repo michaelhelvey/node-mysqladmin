@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react'
 import db from '../db'
+import styled from 'styled-components'
+
+const MyButton = styled.button`
+  background-color: red;
+`
 
 const ConnectionsPage: React.FunctionComponent = props => {
   useEffect(() => {
@@ -21,7 +26,7 @@ const ConnectionsPage: React.FunctionComponent = props => {
   return (
     <div>
       Connections Page Number 4!
-      <button>Yay</button>
+      <MyButton>Yay</MyButton>
     </div>
   )
 }
