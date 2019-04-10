@@ -6,16 +6,20 @@ export const Input = styled.input`
   padding: 0.7em 1em;
   border-radius: 5px;
   font-size: 14px;
-  color: ${props => props.theme.secondaryText};
+  color: ${props => props.theme.mainText};
   background-color: ${props => props.theme.primaryLighterBackground};
 
   ::placeholder {
-    color: ${props => props.theme.secondaryText};
+    color: ${props => props.theme.invertedTextLighter};
   }
 
   :focus {
     background-color: ${props => props.theme.invertedBackground};
     color: ${props => props.theme.invertedText};
+
+    ::placeholder {
+      color: ${props => props.theme.secondaryText};
+    }
   }
 `
 

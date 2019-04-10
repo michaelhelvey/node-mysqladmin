@@ -9,7 +9,7 @@ export const AppContainer = styled.div`
 
 export const AppSidebar = styled.div`
   background-color: ${props => props.theme.secondaryBackground};
-  width: 20%;
+  width: 20em;
   height: 100%;
 `
 

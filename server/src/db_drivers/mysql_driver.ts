@@ -19,6 +19,7 @@ export class MySQLDatabaseDriver implements DatabaseDriver {
         user: options.user,
         password: options.password,
         database: options.database,
+        port: options.port || 3006,
       })
       connection.connect(err => {
         if (err) {
