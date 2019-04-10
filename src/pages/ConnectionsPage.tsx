@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-import db from '../db'
 import styled from 'styled-components'
-
-const MyButton = styled.button`
-  background-color: red;
-`
+import db from '../db'
+import { AppSidebar, SidebarHeader } from '../components/containers'
+import { H1 } from '../components/typography'
+import CreateConnectionForm from '../components/ConnectionForm'
 
 const ConnectionsPage: React.FunctionComponent = props => {
   useEffect(() => {
@@ -24,9 +23,15 @@ const ConnectionsPage: React.FunctionComponent = props => {
   })
 
   return (
-    <div>
-      Connections Page Number 4!
-      <MyButton>Yay</MyButton>
+    <div className="flex h-full">
+      <AppSidebar>
+        <SidebarHeader>
+          <H1>Saved Connections</H1>
+        </SidebarHeader>
+      </AppSidebar>
+      <div className="flex justify-center items-center w-full">
+        <CreateConnectionForm />
+      </div>
     </div>
   )
 }

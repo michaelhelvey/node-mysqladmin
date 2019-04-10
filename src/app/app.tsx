@@ -6,7 +6,7 @@ import configureStore from '../store'
 import ConnectionsPage from '../pages/ConnectionsPage'
 import ConnectionsRoute from './ConnectionsRoute'
 import { ThemeProvider } from 'styled-components'
-import AppContainer from '../components/AppContainer'
+import { AppContainer } from '../components/containers'
 import defaultTheme from '../themes/default'
 
 const { store, persistor } = configureStore()
