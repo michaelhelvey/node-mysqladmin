@@ -2,12 +2,14 @@
   "name": "mysqladmin-server",
   "version": "1.0.0",
   "description": "Server for node-mysqladmin client",
-  "main": "build/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index",
   "repository": "github.com/michaelhelvey/node-mysqladmin",
   "author": "Michael Helvey",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev src/index.ts -P . --no-notify",
+    "build": "tsc --build tsconfig.json",
     "start": "ts-node src/index.ts -P ."
   },
   "dependencies": {

@@ -1,9 +1,21 @@
 import React, { useEffect } from 'react'
-import testDbConnection from '../db'
+import db from '../db'
 
 const ConnectionsPage: React.FunctionComponent = props => {
   useEffect(() => {
-    testDbConnection()
+    const testConnection = async () => {
+      await db.createConnection({
+        user: 'root',
+        password: 'tallis',
+        host: '127.0.0.1',
+        database: 'rrm_test_2',
+      })
+      const data = await db.query(
+        `select * from courses where title like "%Greek%"`
+      )
+      console.log(data)
+    }
+    testConnection()
   })
 
   return (

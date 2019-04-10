@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Ubuntu+Mono');
+
 html,
 body {
   margin: 0;
@@ -6,6 +8,26 @@ body {
   overflow: hidden;
 }
 
-* {
-  font-family: 'Fira Mono', monospace;
+.font-monospace {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+.font-sans {
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
 }
