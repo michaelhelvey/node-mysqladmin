@@ -12,7 +12,7 @@ const ConnectionsPage: React.FunctionComponent = props => {
         user: 'root',
         password: 'tallis',
         host: '127.0.0.1',
-        database: 'rrm_test_2',
+        database: 'wordpress',
       })
       const data = await db.query(
         `select * from courses where title like "%Greek%"`

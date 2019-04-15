@@ -19,8 +19,10 @@ export class MySQLDatabaseDriver implements DatabaseDriver {
         user: options.user,
         password: options.password,
         database: options.database,
-        port: options.port || 3006,
+        port: options.port || 3306,
       })
+      // just set a timeout of 4 seconds, if that's not enough
+      // the client probably won't work properly anyway
       connection.connect(err => {
         if (err) {
           reject(err)
