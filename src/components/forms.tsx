@@ -32,5 +32,5 @@ export const Label = styled.label`
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
-  margin: 1em 0;
+  margin: 0.6em 0;
 `

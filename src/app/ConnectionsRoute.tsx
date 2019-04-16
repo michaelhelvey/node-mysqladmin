@@ -10,7 +10,7 @@ const mapStateToProps = (state: AppState) => ({
 })
 
 interface ConnectionsRouteProps extends RouteProps {
-  OriginalComponent: React.FunctionComponent<any>
+  OriginalComponent: typeof React.Component
   activeConnection: DatabaseConnection | null
   isCurrentlyConnected: boolean
 }
@@ -27,7 +27,9 @@ const ConnectionsRoute: React.FunctionComponent<ConnectionsRouteProps> = ({
       render={props =>
         isCurrentlyConnected ? (
           <Redirect
-            to={`/databases/${(activeConnection as DatabaseConnection).name}`}
+            to={`/databases/${
+              (activeConnection as DatabaseConnection).connectionName
+            }`}
           />
         ) : (
           <OriginalComponent {...props} />

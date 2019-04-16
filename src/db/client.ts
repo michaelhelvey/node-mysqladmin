@@ -1,6 +1,7 @@
 import io from 'socket.io-client'
 import { SocketEventType as events } from 'mysqladmin-server/dist/events'
 import { DBConnectionOptions } from 'mysqladmin-server/dist/db'
+import { DatabaseConnection } from '../reducers/databases'
 
 export class Client {
   private _socket: SocketIOClient.Socket
@@ -8,7 +9,7 @@ export class Client {
     this._socket = io('http://localhost:3006')
   }
 
-  public createConnection(options: DBConnectionOptions) {
+  public createConnection(options: DBConnectionOptions): Promise<any> {
     return new Promise((resolve, reject) => {
       this._socket.emit(events.CREATE_DB_CONN_REQ, options)
       this._socket.on(events.CREATE_DB_CONN_RESPONSE, (data: any) => {

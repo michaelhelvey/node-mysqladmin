@@ -23,7 +23,7 @@ export class MySQLDatabaseDriver implements DatabaseDriver {
       })
       // just set a timeout of 4 seconds, if that's not enough
       // the client probably won't work properly anyway
-      connection.connect(err => {
+      connection.connect({ timeout: 4000 }, err => {
         if (err) {
           reject(err)
         } else {

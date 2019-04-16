@@ -9,4 +9,5 @@ export default {
   secondaryText: '#D2EBFF',
   invertedText: '#18212B',
   invertedTextLighter: '#2c3e50',
+  defaultErrorColor: '#c0392b',
 }
